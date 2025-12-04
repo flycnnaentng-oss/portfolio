@@ -1,7 +1,7 @@
 <script>
-        // === JavaScript Features (Minimum 3 Required) ===
+        // === JavaScript Features ===
         
-        // Feature 1: Smooth Scrolling for internal links
+        // Feature 1: Smooth Scrolling & Header Offset
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -9,8 +9,8 @@
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
-                    // Calculate target position, accounting for fixed header height (4rem or 64px)
-                    const headerHeight = 64; 
+                    // Header height is 4.5rem (approx 72px)
+                    const headerHeight = 72; 
                     const targetPosition = targetElement.offsetTop - headerHeight;
 
                     window.scrollTo({
@@ -24,7 +24,6 @@
                     if (nav.classList.contains('active')) {
                         nav.classList.remove('active');
                         toggle.setAttribute('aria-expanded', 'false');
-                        // Update icon back to bars
                         toggle.innerHTML = '<i class="fas fa-bars"></i>';
                     }
                 }
@@ -35,17 +34,15 @@
         // Feature 2: Mobile Navigation Toggle (Hamburger Menu)
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const nav = document.getElementById('main-nav');
-            const isExpanded = this.getAttribute('aria-expanded') === 'true' || false;
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
             
             nav.classList.toggle('active');
             this.setAttribute('aria-expanded', !isExpanded);
             
             // Toggle between bars and close icon
-            if (!isExpanded) {
-                this.innerHTML = '<i class="fas fa-times"></i>'; // Close icon
-            } else {
-                this.innerHTML = '<i class="fas fa-bars"></i>'; // Hamburger icon
-            }
+            this.innerHTML = isExpanded 
+                ? '<i class="fas fa-bars"></i>' 
+                : '<i class="fas fa-times"></i>';
         });
 
 
@@ -69,14 +66,11 @@
             }
         }
 
-        // Check for saved theme preference on load
+        // Initialize theme based on storage or system preference
         const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            setMode(true);
-        } else if (savedTheme === 'light') {
-            setMode(false);
+        if (savedTheme) {
+            setMode(savedTheme === 'dark');
         } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            // Check system preference if no theme is saved
             setMode(true);
         } else {
             setMode(false);
