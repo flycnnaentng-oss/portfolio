@@ -1,0 +1,172 @@
+/* --------------------
+   GOOGLE FONT
+-------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* --------------------
+   LIGHT & DARK MODE VARIABLES
+-------------------- */
+
+:root {
+    --bg: #ffffff;
+    --text: #222;
+    --nav-bg: #A7C7E7;     /* baby blue */
+    --accent: #F7CFE3;     /* soft pink */
+    --card-bg: #ffffff;
+    --border: #A7C7E7;
+}
+
+body.dark-mode {
+    --bg: #1d1f27;
+    --text: #f8f8f8;
+    --nav-bg: #2b2e3a;     /* dark navy */
+    --accent: #F7CFE3;     /* keep pink highlight */
+    --card-bg: #2b2e3a;
+    --border: #F7CFE3;
+}
+
+/* --------------------
+   GLOBAL STYLES
+-------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.4s, color 0.4s;
+}
+
+/* --------------------
+   NAVIGATION
+-------------------- */
+nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: var(--nav-bg);
+    color: var(--text);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--accent);
+    z-index: 100;
+    transition: background 0.4s, color 0.4s;
+}
+
+nav h1 {
+    font-size: 22px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+/* Dark mode toggle button */
+#mode-toggle {
+    background: var(--accent);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: white;
+    color: #222;
+    transition: 0.3s;
+}
+
+/* Dark mode */
+body.dark-mode {
+    background: #0d1b2a;
+    color: #f0f0f0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #b3d9ff; /* baby blue */
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
+}
+
+#theme-toggle {
+    padding: 8px 15px;
+    border: none;
+    background: #ffb3d9; /* soft pink */
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.section {
+    padding: 80px 40px;
+    text-align: center;
+}
+
+h1 .highlight {
+    color: #7ab8ff;
+}
+
+/* IMAGES */
+.home-img, .about-img, .contact-img, .project img {
+    width: 250px;
+    border-radius: 12px;
+    margin-top: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.project {
+    margin: 40px auto;
+    max-width: 400px;
+}
+
+/* Dark mode colors */
+body.dark-mode nav {
+    background: #1b263b;
+}
+
+body.dark-mode #theme-toggle {
+    background: #ff8ac4;
+}
+
+body.dark-mode a {
+    color: #fff;
+}
