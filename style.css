@@ -5,12 +5,16 @@
     --bg-color: #ffffff; /* White background */
     --text-color: #333333; /* Dark text */
     --card-bg: #f8f8f8; /* Card background */
+    --button-text: #ffffff;
 }
 
 [data-theme="dark"] {
+    --primary-color: #ff6fa3; /* Keep pink even in dark mode */
+    --secondary-color: #4fa3ff; /* Keep blue */
     --bg-color: #1e1e1e;
     --text-color: #f0f0f0;
     --card-bg: #2c2c2c;
+    --button-text: #ffffff;
 }
 
 /* ===== Global Styles ===== */
@@ -39,6 +43,7 @@ nav {
     position: sticky;
     top: 0;
     z-index: 100;
+    border-bottom: 3px solid var(--secondary-color);
 }
 
 nav .logo {
@@ -61,6 +66,23 @@ nav ul li a {
 
 nav ul li a:hover {
     color: var(--secondary-color);
+}
+
+/* Dark Mode Toggle Button */
+#theme-toggle {
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+#theme-toggle:hover {
+    background: white;
+    color: var(--primary-color);
 }
 
 /* Burger Menu for mobile */
@@ -131,11 +153,12 @@ nav ul li a:hover {
     padding: 1.5rem;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
 
 .project-card img {
@@ -154,7 +177,7 @@ nav ul li a:hover {
     margin-top: 0.5rem;
     padding: 0.5rem 1rem;
     background: var(--primary-color);
-    color: white;
+    color: var(--button-text);
     border-radius: 5px;
     text-decoration: none;
     transition: 0.3s;
@@ -214,7 +237,7 @@ nav ul li a:hover {
     border-radius: 8px;
     border: none;
     background: var(--secondary-color);
-    color: white;
+    color: var(--button-text);
     font-size: 1rem;
     cursor: pointer;
     transition: 0.3s;
