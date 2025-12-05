@@ -1,35 +1,37 @@
 /* ===== Variables for Light and Dark Mode ===== */
 :root {
-    --primary-color: #ff6fa3; /* Pink */
-    --secondary-color: #4fa3ff; /* Blue */
-    --bg-color: #ffffff; /* White background */
-    --text-color: #333333; /* Dark text */
-    --card-bg: #f8f8f8; /* Card background */
+    --primary-color: #ff7ac8;      /* Soft Neon Pink */
+    --secondary-color: #7aa8ff;    /* Soft Neon Blue */
+    --accent-color: #d8b4fe;       /* Soft Purple Glow */
+    --bg-color: #fdfcff;           /* Soft White / Blush */
+    --text-color: #2a2a2a;
+
+    --card-bg: rgba(255, 255, 255, 0.55);  /* Glassmorphism */
+    --card-border: rgba(255, 255, 255, 0.25);
+
     --button-text: #ffffff;
 }
 
 [data-theme="dark"] {
-    --primary-color: #ff6fa3; /* Keep pink even in dark mode */
-    --secondary-color: #4fa3ff; /* Keep blue */
-    --bg-color: #1e1e1e;
-    --text-color: #f0f0f0;
-    --card-bg: #2c2c2c;
-    --button-text: #ffffff;
+    --bg-color: #121212;
+    --text-color: #f2f2f2;
+
+    --card-bg: rgba(255, 255, 255, 0.06);
+    --card-border: rgba(255, 255, 255, 0.12);
 }
 
-/* ===== Global Styles ===== */
+/* ===== Global Style ===== */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
-    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 /* ===== Navigation ===== */
@@ -38,54 +40,39 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 3px solid var(--secondary-color);
+    border-bottom: 3px solid var(--accent-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 nav .logo {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: bold;
+    letter-spacing: 1px;
 }
 
 nav ul {
-    list-style: none;
     display: flex;
-    gap: 1.5rem;
+    list-style: none;
+    gap: 2rem;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: 500;
-    transition: 0.3s;
+    transition: 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: var(--secondary-color);
+    color: var(--accent-color);
 }
 
-/* Dark Mode Toggle Button */
-#theme-toggle {
-    background: transparent;
-    border: 2px solid white;
-    border-radius: 5px;
-    color: white;
-    padding: 0.3rem 0.6rem;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: 0.3s;
-}
-
-#theme-toggle:hover {
-    background: white;
-    color: var(--primary-color);
-}
-
-/* Burger Menu for mobile */
+/* Burger menu */
 .burger {
     display: none;
     cursor: pointer;
@@ -94,40 +81,40 @@ nav ul li a:hover {
 }
 
 .burger div {
-    width: 25px;
+    width: 26px;
     height: 3px;
     background: white;
+    border-radius: 2px;
 }
 
 /* ===== Home Section ===== */
 #home {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     text-align: center;
     padding: 5rem 2rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color), var(--secondary-color));
     color: white;
+    border-radius: 0 0 35px 35px;
 }
 
-#home .home-content img {
+#home img {
     width: 180px;
     height: 180px;
     border-radius: 50%;
     border: 4px solid white;
     margin-bottom: 1.5rem;
     object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
 }
 
 #home h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 2.3rem;
+    margin-bottom: 0.8rem;
 }
 
 #home p {
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
+    opacity: 0.95;
 }
 
 /* ===== Projects Section ===== */
@@ -137,145 +124,74 @@ nav ul li a:hover {
 }
 
 #projects h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-bottom: 2rem;
-    color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 700;
 }
 
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
 }
 
 .project-card {
     background: var(--card-bg);
-    padding: 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(10px);
+    border-radius: 18px;
+    padding: 1.8rem;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: 0.3s ease;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
 }
 
 .project-card img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 12px;
     margin-bottom: 1rem;
 }
 
 .project-card h3 {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     margin-bottom: 0.5rem;
 }
 
-.project-card a {
-    display: inline-block;
-    margin-top: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: var(--primary-color);
-    color: var(--button-text);
-    border-radius: 5px;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.project-card a:hover {
-    background: var(--secondary-color);
-}
-
-/* ===== About Section ===== */
-#about {
-    padding: 4rem 2rem;
-    text-align: center;
-}
-
-#about h2 {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-}
-
-#about p {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-/* ===== Contact Section ===== */
-#contact {
-    padding: 4rem 2rem;
-    text-align: center;
-}
-
-#contact h2 {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-}
-
-#contact form {
-    max-width: 500px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-#contact input, 
-#contact textarea {
-    padding: 0.8rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-}
-
-#contact button {
-    padding: 0.8rem;
-    border-radius: 8px;
+.project-card button {
+    margin-top: 0.8rem;
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
     border: none;
-    background: var(--secondary-color);
-    color: var(--button-text);
-    font-size: 1rem;
+    border-radius: 50px;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 0.95rem;
 }
 
-#contact button:hover {
-    background: var(--primary-color);
+.project-card button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
-/* ===== Footer ===== */
-footer {
-    text-align: center;
-    padding: 2rem;
-    background: var(--primary-color);
-    color: white;
+/* ===== MODAL (View Project Popup) ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.65);
+    justify-content: center;
+    align-items: center;
 }
 
-/* ===== Responsive ===== */
-@media screen and (max-width: 768px) {
-    nav ul {
-        display: none;
-        flex-direction: column;
-        gap: 1rem;
-        background: var(--primary-color);
-        position: absolute;
-        top: 100%;
-        right: 0;
-        width: 200px;
-        padding: 1rem;
-        border-radius: 0 0 0 10px;
-    }
-
-    nav ul.active {
-        display: flex;
-    }
-
-    .burger {
-        display: flex;
-    }
-}
+.mod
 
