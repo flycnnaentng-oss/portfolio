@@ -26,26 +26,34 @@ form.addEventListener('submit', function(e) {
     form.reset();
 });
 
-// =============================
-// View Project Button Functionality
-// =============================
-const viewButtons = document.querySelectorAll('.view-btn');
+// View Project Modal Functionality
+const modal = document.getElementById("projectModal");
+const modalImg = document.getElementById("modalImg");
+const modalTitle = document.getElementById("modalTitle");
+const closeBtn = modal.querySelector(".close");
 
-viewButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const projectId = button.dataset.project; // assumes you have data-project="1" etc.
-        const projectImage = document.querySelector(`#project-image-${projectId}`);
-        
-        if (projectImage.style.display === 'block') {
-            projectImage.style.display = 'none';
-        } else {
-            projectImage.style.display = 'block';
-        }
+document.querySelectorAll(".view-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalImg.src = btn.dataset.img;
+        modalTitle.textContent = btn.dataset.title;
     });
 });
 
+// Close modal when clicking X
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
 });
 
+// Close modal when clicking outside the modal content
+window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
+
+
     
+
 
 
