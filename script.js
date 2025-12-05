@@ -25,35 +25,3 @@ form.addEventListener('submit', function(e) {
     formMessage.textContent = "Thank you! Your message has been sent (simulation).";
     form.reset();
 });
-
-// View Project Modal Functionality
-const modal = document.getElementById("projectModal");
-const modalImg = document.getElementById("modalImg");
-const modalTitle = document.getElementById("modalTitle");
-const closeBtn = modal.querySelector(".close");
-
-document.querySelectorAll(".view-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-        modal.style.display = "block";
-        modalImg.src = btn.dataset.img;
-        modalTitle.textContent = btn.dataset.title;
-    });
-});
-
-// Close modal when clicking X
-closeBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-});
-
-// Close modal when clicking outside the modal content
-window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        modal.style.display = "none";
-    }
-});
-
-
-    
-
-
-
